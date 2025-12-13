@@ -499,7 +499,7 @@ div.fundo .olho {
 
 .rodape a {
     color: #00BCD4;
-    text-decoration: none;
+    text-decoration: underline;
     margin: 0 10px;
     transition: color 0.3s ease;
 }
