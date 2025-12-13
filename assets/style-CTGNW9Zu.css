@@ -1,0 +1,598 @@
+/* --- 1. RESET BÁSICO E TIPOGRAFIA --- */
+html{
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #1A1A1A; /* Preto Suave */
+    background-color: #FFFFFF; /* Fundo branco puro para contraste */
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #1A1A1A;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 2. BOTÕES DE AÇÃO (CTAs) --- */
+.btn-cta-principal, .btn-final-enviar {
+    display: inline-block;
+    background-color: #d41900; /* Azul Ciano Vibrante */
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-cta-principal:hover, .btn-final-enviar:hover {
+    background-color: #c01802; /* Tom um pouco mais escuro no hover */
+    transform: translateY(-2px);
+}
+
+/* --- 3. HERO SECTION (#hero) --- */
+header#hero {
+    position: relative;
+    background-color: #F8F8F8; /* Fundo Cinza Quente para a seção principal */
+    padding: 0px 20px; /* Redução do padding vertical para mobile e adição horizontal */
+    text-align: center;
+    background-image: linear-gradient(45deg,#f8f8f8,#0097A7);
+    padding-bottom: 950px;
+    
+}
+
+
+.container-texto-principal {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.038);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 0;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* 1. ESTILO MOBILE-FIRST (Padrão para Telas Pequenas) */
+#hero h1 {
+    font-size: 2.2em; /* Tamanho IDEAL para mobile (fácil leitura) */
+    margin-bottom: 0.2em;
+    font-weight: 700;
+}
+
+#hero .pre-headline {
+    color: #f8f8f8;
+    font-weight: 600;
+    margin-bottom: 1em;
+    margin-top: 10px;
+}
+
+#hero .sub-headline {
+    font-size: 1.1em; /* Tamanho IDEAL para mobile */
+    color: #193f2a;
+    margin-bottom: 30px;
+    text-shadow: .3px .3px .3px #f8f8f8;
+    font-weight: bold;
+    text-decoration: underline;  
+}
+
+.garantia-valor {
+    margin-top: 25px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+div.fundo .olho {
+   position: absolute; 
+    top: 150px;
+    left: 0%;
+    width: 200px;
+    opacity: .5;
+    transform: translate(-50%,0%);
+    filter: hue-rotate(180deg);
+  /*   backdrop-filter: hue-rotate(40deg);  */
+    z-index: 1;
+}
+
+/* CONTINUAÇÃO DO SEU CSS MOBILE-FIRST */
+
+/* --- Estilização do Mockup na HERO --- */
+
+.mockup-performance {
+    /* Garante que a imagem tenha um espaço reservado abaixo do CTA */
+    margin: 40px auto -15px; 
+    max-width: 80%; /* Ocupa a maior parte da largura no mobile */
+    overflow: hidden;
+    border-radius: 8px; /* Borda levemente arredondada para o mockup */
+    border: 4px solid rgba(0, 0, 0, 0.466);
+    border-left-width: 0px;
+    border-top-width: 4px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+    transition: transform .5s, padding-top .5s;
+    transform-origin: center center;
+}
+
+.mockup-performance:hover{
+    border: 2px solid rgba(0, 0, 0, 0.466);
+    border-left-width: 0px;
+    border-top-width: 2px;
+    padding-top: 0px;
+}
+
+.mockup-performance img {
+    width: 100%; /* Imagem sempre preenche 100% do container */
+    height: auto;
+    display: block; /* Remove possíveis espaços em branco abaixo da imagem */
+    border-radius: 5%;
+    transition: all .4s;
+}
+
+.mockup-performance:hover img{
+    width: 120%;
+
+}
+
+.mockup-performance p{
+    margin-top: 5px;
+    margin-bottom: -8px;
+    transition: font-size .4s;
+}
+
+.mockup-performance:hover p{
+    font-size: large;
+}
+
+/* MEDIA QUERY para Desktop (a partir de 768px) */
+@media (min-width: 768px) {
+    .mockup-performance {
+        margin: 60px auto;
+        max-width: 650px; /* Limita o tamanho máximo no desktop */
+    }
+}
+
+/* Ajustes Mobile para Hero - Reduzindo tamanho da fonte para mobile */
+#hero h1 {
+    font-size: 2.2em; /* Redução para telas menores */
+    padding: 0 10px;
+}
+
+#hero .sub-headline {
+    font-size: 1.1em;
+    padding: 0 15px;
+}
+
+/* --- 4. SEÇÃO DE DOR E PROJEÇÃO DE VALOR (#dor) --- */
+#dor {
+    padding: 60px 20px;
+    background-color: #FFFFFF; /* Fundo branco */
+    text-align: center;
+}
+
+#dor h2 {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+}
+
+.container-icones-dor {
+    display: flex;
+    flex-direction: column; /* Pilha vertical no mobile */
+    gap: 30px; /* Espaçamento entre os itens */
+}
+
+.item-dor {
+    padding: 20px;
+    background-color: #F8F8F8; /* Cinza Quente para o Card */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra suave */
+}
+
+.item-dor img {
+    width: 60px; /* Tamanho do ícone no mobile */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.item-dor h3 {
+    color: #1A1A1A;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.item-dor p {
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* --- 5. SEÇÃO DE PROVA SOCIAL E RESULTADOS (#cases) --- */
+#cases {
+    padding: 80px 20px;
+    background-color: #1A1A1A; /* Fundo escuro para destacar os números */
+    color: #FFFFFF;
+    text-align: center;
+}
+
+#cases h2 {
+    color: #FFFFFF;
+    font-size: 1.8em;
+    margin-bottom: 50px;
+}
+
+.container-metricas {
+    display: flex;
+    flex-direction: column; /* Pilha vertical no mobile */
+    gap: 40px;
+}
+
+.metrica-destaque {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+}
+
+.metrica-destaque:last-child {
+    border-bottom: none;
+}
+
+.metrica-destaque .numero {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.2em; /* Grande destaque para o número */
+    font-weight: 800;
+    color: #4CAF50; /* Verde Sucesso para a métrica */
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.metrica-destaque .descricao {
+    font-size: 1em;
+    color: #F8F8F8; /* Off-White */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-ver-estudo-caso {
+    margin-top: 50px;
+   /*  background-color: #00BCD4;  */
+    /* Herda o estilo do .btn-cta-principal */
+}
+
+
+/* --- 6. SEÇÃO SOBRE O GESTOR (#gestor) --- */
+#gestor {
+    padding: 60px 20px;
+    background-color: #F8F8F8; /* Cinza Quente de Fundo */
+    text-align: center;
+}
+
+.foto-gestor img, .pessoa {
+    width: 250px; /* Tamanho da foto no mobile */
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
+    border: 5px solid #FFFFFF;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.texto-gestor h2 {
+    font-size: 1.6em;
+}
+
+.texto-gestor p {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.certificacoes {
+    list-style: none;
+    padding: 0;
+    font-weight: 600;
+    color: #00BCD4; /* Destaque azul */
+    margin-top: 15px;
+}
+
+.certificacoes li {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+/* --- 7. MEDIA QUERY para Desktop (a partir de 768px) --- */
+@media (min-width: 768px) {
+    
+    /* HERO SECTION (Retomando o tamanho maior para desktop) */
+    header#hero {
+        padding: 100px 0;
+        padding-bottom: 1400px;
+    }
+
+    #hero h1 {
+        font-size: 4em; /* Tamanho maior no desktop */
+    }
+
+    /* SEÇÃO DE DOR */
+    .container-icones-dor {
+        flex-direction: row; /* Colunas lado a lado no desktop */
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+    /* SEÇÃO DE RESULTADOS (#cases) */
+    .container-metricas {
+        flex-direction: row; /* Colunas lado a lado no desktop */
+        justify-content: space-around;
+        gap: 30px;
+    }
+    
+    .metrica-destaque {
+        border-bottom: none; /* Remove separador horizontal */
+        border-right: 1px solid rgba(255, 255, 255, 0.1); /* Adiciona separador vertical */
+        flex: 1; /* Distribui o espaço uniformemente */
+    }
+
+    .metrica-destaque:last-child {
+        border-right: none;
+    }
+
+    /* SEÇÃO GESTOR */
+    #gestor {
+        display: flex;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .foto-gestor {
+        flex: 0 0 250px; /* Tamanho fixo para a foto */
+        margin-right: 50px;
+    }
+    
+    .foto-gestor img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .texto-gestor {
+        flex: 1;
+    }
+    
+    .certificacoes {
+        text-align: left;
+    }
+}
+
+/* --- 8. TESTEMUNHOS DE CLIENTES (#depoimentos) --- */
+#depoimentos {
+    padding: 60px 20px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+#depoimentos h2 {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+}
+
+.container-depoimentos {
+    display: flex;
+    flex-direction: column; /* Pilha vertical no mobile */
+    gap: 30px;
+}
+
+.depoimento-cartao {
+    background-color: #F8F8F8; /* Cinza Quente */
+    padding: 30px;
+    border-left: 5px solid #00BCD4; /* Linha de destaque para autoridade */
+    border-radius: 8px;
+    text-align: left;
+    font-style: italic;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.depoimento-cartao p {
+    margin-bottom: 15px;
+    color: #1A1A1A;
+}
+
+.depoimento-cartao cite {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    color: #4CAF50; /* Verde Sucesso para a fonte (quem deu o depoimento) */
+}
+
+/* --- 9. CTA FINAL COM OFERTA IRRECUSÁVEL E FORMULÁRIO (#contato) --- */
+#contato {
+    padding: 80px 20px;
+    background-color: #1A1A1A; /* Fundo escuro para fechar a venda */
+    color: #FFFFFF;
+    text-align: center;
+}
+
+#contato h2 {
+    color: #FFFFFF;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+#contato p {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: #CCC;
+}
+
+.formulario-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.formulario-contato input,
+.formulario-contato select {
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #2A2A2A; /* Um pouco mais claro que o fundo */
+    color: #FFFFFF;
+    font-size: 1em;
+}
+
+.formulario-contato input::placeholder,
+.formulario-contato select option {
+    color: #999;
+}
+
+/* O botão de envio usa o estilo já definido: .btn-final-enviar */
+
+
+/* --- 10. FOOTER (Rodapé) --- */
+.rodape {
+    background-color: #000000;
+    color: #999;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+.rodape a {
+    color: #00BCD4;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.rodape a:hover {
+    color: #FFFFFF;
+}
+
+
+/* --- 11. MEDIA QUERY para Desktop (a partir de 768px - CONTINUAÇÃO) --- */
+@media (min-width: 768px) {
+    
+    /* SEÇÃO DEPOIMENTOS */
+    .container-depoimentos {
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .depoimento-cartao {
+        flex: 1;
+        max-width: 45%;
+    }
+
+    /* SEÇÃO CTA FINAL */
+    #contato h2 {
+        font-size: 3em;
+    }
+}
+
+/* --- 5.5. SEÇÃO DE GARANTIA E CONFIANÇA (#garantia) --- */
+#garantia {
+    padding: 60px 20px;
+    background-color: #F8F8F8; /* Cinza Quente */
+    text-align: center;
+}
+
+#garantia h2 {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+}
+
+.container-garantia {
+    display: flex;
+    flex-direction: column; /* Vertical no mobile */
+    gap: 30px;
+}
+
+.item-garantia {
+    padding: 25px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-garantia:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.item-garantia h3 {
+    font-size: 1.3em;
+    color: #00BCD4; /* Azul Ciano */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.item-garantia p {
+    color: #555;
+    font-size: 0.95em;
+}
+
+/* MEDIA QUERY para Desktop (a partir de 768px) */
+@media (min-width: 768px) {
+    .container-garantia {
+        flex-direction: row; /* Horizontal no desktop */
+        justify-content: space-between;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+}
+
+/*  imagens */
+
+
+img.pessoa{
+  width: 250px !important;
+  height: 250px;
+}
+
+.img-rounded {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+@media screen and (max-width: 325px) {
+    .pre-headline{
+        display: none;
+    }
+
+    h1{
+        margin-top: 10px;
+    }
+
+    .sub-headline span{
+        display: none;
+    }
+
+    .sub-headline{
+        font-weight: 700;
+    }
+}
+
