@@ -16,6 +16,10 @@ body {
     line-height: 1.6;
 }
 
+main{
+    overflow: hidden;
+}
+
 h1, h2, h3 {
     font-family: 'Poppins', sans-serif;
     color: #1A1A1A;
@@ -283,7 +287,21 @@ div.fundo .olho {
     padding: 60px 20px;
     background-color: #F8F8F8; /* Cinza Quente de Fundo */
     text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+   
 }
+
+.foto-gestor{
+   flex-shrink: 1;
+   flex-grow: 1;
+   flex-basis: 420px;
+   display: flex;
+   justify-content: center;
+}
+
 
 .foto-gestor img, .pessoa {
     width: 250px; /* Tamanho da foto no mobile */
@@ -293,6 +311,12 @@ div.fundo .olho {
     margin-bottom: 25px;
     border: 5px solid #FFFFFF;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.foto-gestor img{
+    flex-basis: 420px;
+    height: 420px;
+    flex-shrink: 1;
 }
 
 .texto-gestor h2 {
@@ -368,10 +392,6 @@ div.fundo .olho {
         margin-right: 50px;
     }
     
-    .foto-gestor img {
-        width: 200px;
-        height: 200px;
-    }
 
     .texto-gestor {
         flex: 1;
