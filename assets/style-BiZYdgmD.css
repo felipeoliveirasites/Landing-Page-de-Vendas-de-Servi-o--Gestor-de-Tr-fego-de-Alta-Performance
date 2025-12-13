@@ -308,7 +308,7 @@ div.fundo .olho {
     list-style: none;
     padding: 0;
     font-weight: 600;
-    color: #4CAF50; /* Destaque azul */
+    color: #037e8f; /* Destaque azul */
     margin-top: 15px;
 }
 
@@ -419,7 +419,7 @@ div.fundo .olho {
     display: block;
     font-style: normal;
     font-weight: 600;
-    color: #4CAF50; /* Verde Sucesso para a fonte (quem deu o depoimento) */
+    color: #1a6d1e; /* Verde Sucesso para a fonte (quem deu o depoimento) */
 }
 
 /* --- 9. CTA FINAL COM OFERTA IRRECUSÁVEL E FORMULÁRIO (#contato) --- */
@@ -543,7 +543,7 @@ div.fundo .olho {
 
 .item-garantia h3 {
     font-size: 1.3em;
-    color: #00BCD4; /* Azul Ciano */
+    color: #0594a7; /* Azul Ciano */
     margin-bottom: 10px;
     font-weight: 700;
 }
