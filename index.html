@@ -163,18 +163,35 @@
       <h2>Análise Estratégica Gratuita (30 minutos)</h2>
       <p>Descubra em nossa consultoria gratuita de 30 minutos o potencial real de lucro do seu negócio com o tráfego pago.</p>
       <form method="post" action="./sistema/enviado.php" class="formulario-contato" autocomplete="true" >
-        <input type="text" placeholder="Seu Nome" required name="name">
-        <input type="text" placeholder="Nome da Sua Empresa" name="name_empresa" required>
-        <input type="tel" placeholder="Seu WhatsApp (Com DDD)" name="telephone" required>
-       
-       
-        <select required name="renda" id="investimento-renda" aria-label="Qual seu investimento mensal em anúncios?">
-            <option value="">Qual seu investimento mensal em anúncios?</option>
-            <option value="ate-2k">Até R$ 2.000</option>
-            <option value="2k-5k">R$ 2.000 a R$ 5.000</option>
-            <option value="mais-5k">Acima de R$ 5.000</option>
-        </select>
-        <button type="submit" class="btn-final-enviar">AGENDAR ANÁLISE SEM COMPROMISSO</button>
+          <input type="text" 
+                placeholder="Seu Nome" 
+                aria-label="Seu Nome" 
+                required 
+                name="name">
+
+          <input type="text" 
+                placeholder="Nome da Sua Empresa" 
+                aria-label="Nome da Sua Empresa" 
+                name="name_empresa" 
+                required>
+
+          <input type="tel" 
+                placeholder="Seu WhatsApp (Com DDD)" 
+                aria-label="Seu WhatsApp (Com DDD)"
+                name="telephone" 
+                required>
+        
+          <select required 
+                  name="renda" 
+                  id="investimento-renda" 
+                  aria-label="Qual seu investimento mensal em anúncios?">
+              <option value="">Qual seu investimento mensal em anúncios?</option>
+              <option value="ate-2k">Até R$ 2.000</option>
+              <option value="2k-5k">R$ 2.000 a R$ 5.000</option>
+              <option value="mais-5k">Acima de R$ 5.000</option>
+          </select>
+          
+          <button type="submit" class="btn-final-enviar">AGENDAR ANÁLISE SEM COMPROMISSO</button>
       </form>
     </div>
   </section>
