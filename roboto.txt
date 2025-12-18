@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /assets/img/
+
+# Bloqueia apenas arquivos de sistema e scripts de processamento
+Disallow: /assets/
+Disallow: /sistema/
+Disallow: /enviado.php
+
+# Link do seu domínio atual
+Sitemap: https://gestor-de-trafego-pago.pages.dev/sitemap.xml
