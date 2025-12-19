@@ -271,46 +271,38 @@
   
 
 <script>
-document.querySelector('.formulario-contato').addEventListener('submit', async function(e) {
+document.querySelector('.formulario-contato').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const btn = document.querySelector('.btn-final-enviar');
-    const originalText = btn.innerHTML;
-    
-    // Feedback visual
     btn.disabled = true;
-    btn.innerHTML = "ENVIANDO AGUARDE...";
+    btn.innerHTML = "ENVIANDO...";
 
-    // Coleta os dados (Garanta que os inputs tenham o atributo name="")
+    // Coleta os dados usando FormData (mais seguro)
+    const formData = new FormData(this);
     const dados = {
-        name: this.name.value,
-        name_instagram: this.name_instagram.value,
-        telephone: this.telephone.value,
-        renda: this.renda.value
+        name: formData.get('name'),
+        name_instagram: formData.get('name_instagram'),
+        telephone: formData.get('telephone'),
+        renda: formData.get('renda')
     };
 
     const urlWorker = 'https://wispy-shadow-cb91.felipeoliveirasites.workers.dev/';
 
-    try {
-        // Enviamos e esperamos a resposta (ou erro)
-        await fetch(urlWorker, {
-            method: 'POST',
-            body: JSON.stringify(dados),
-            headers: { 'Content-Type': 'application/json' },
-            mode: 'no-cors', // Adicionado para evitar problemas de política de navegador
-            keepalive: true
-        });
-        
-        btn.innerHTML = "SUCESSO!";
-    } catch (err) {
-        console.error("Erro no envio:", err);
-        // Mesmo com erro, seguimos para o WhatsApp para não perder o cliente
-    }
+    // Envio Otimizado
+    fetch(urlWorker, {
+        method: 'POST',
+        body: JSON.stringify(dados),
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors', // <--- IMPORTANTE: Evita erro de bloqueio do navegador
+        keepalive: true
+    });
 
-    // Redireciona após 800ms para o usuário ver o "SUCESSO"
+    // Feedback e Redirecionamento
+    btn.innerHTML = "SUCESSO!";
     setTimeout(() => {
         window.location.href = "https://wa.me/5511963333855?text=Olá! Acabei de solicitar meu diagnóstico no site.";
-    }, 800);
+    }, 1000);
 });
 </script>
   
