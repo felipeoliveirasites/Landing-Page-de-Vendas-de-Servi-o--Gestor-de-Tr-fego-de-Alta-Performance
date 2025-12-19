@@ -10,7 +10,7 @@
       
     </style>
   <meta name="description" 
-      content="Pare de queimar dinheiro em anúncios! Tenha lucro previsível com Gestão de Tráfego de Alta Performance (CPA e ROI). Agende sua análise gratuita de 30 minutos">  
+      content="Pare de queimar dinheiro em anúncios! Tenha lucro previsível com Gestão de Tráfego de Alta Performance (CPA e ROI). Agende sua análise gratuita de 30 minutos.">  
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -299,7 +299,7 @@ document.querySelector('.formulario-contato').addEventListener('submit', async f
             keepalive: true
         });
 
-        if (response.ok) {
+       if (response.status === 200 || response.ok) {
             // 3. Feedback visual de vitória
             btn.innerHTML = "SUCESSO!";
             btn.style.backgroundColor = "#28a745"; // Opcional: muda para verde se quiser
