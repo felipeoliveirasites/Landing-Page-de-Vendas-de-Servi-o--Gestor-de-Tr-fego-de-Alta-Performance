@@ -270,18 +270,18 @@
   </footer>
   
 
-   <script>
+<script>
 document.querySelector('.formulario-contato').addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede a página de recarregar
+    e.preventDefault();
     
     const btn = document.querySelector('.btn-final-enviar');
     const originalText = btn.innerHTML;
     
-    // Feedback visual imediato
+    // Feedback visual
     btn.disabled = true;
     btn.innerHTML = "ENVIANDO AGUARDE...";
 
-    // Coleta os dados dos inputs baseado no atributo 'name'
+    // Coleta os dados
     const dados = {
         name: this.name.value,
         name_instagram: this.name_instagram.value,
@@ -289,25 +289,28 @@ document.querySelector('.formulario-contato').addEventListener('submit', functio
         renda: this.renda.value
     };
 
-    // LINK DO SEU GOOGLE APPS SCRIPT AQUI:
-    const urlGoogle = 'https://script.google.com/macros/s/AKfycbyoF682cxPT53PkuDz9ZpD4bYVYPFsQ7REcssUgYsxF4x-7UIJ-oqDsepBjSUUYBOAa/exec';
+    // COLE A URL DO SEU WORKER ABAIXO (Aquela .workers.dev):
+    const urlWorker = 'https://wispy-shadow-cb91.felipeoliveirasites.workers.dev/';
 
-    fetch(urlGoogle, {
+    fetch(urlWorker, {
         method: 'POST',
-        mode: 'no-cors', // Essencial para evitar bloqueio de segurança do Google
         body: JSON.stringify(dados),
         headers: {
             'Content-Type': 'application/json'
         }
     })
-    .then(() => {
-        // Se chegou aqui, os dados foram enviados!
-        btn.innerHTML = "SUCESSO!";
-        
-        // Pequeno delay para o lead ver o sucesso antes de ir para o WhatsApp
-        setTimeout(() => {
-            window.location.href = "https://wa.me/55SEUNUMERO?text=Olá! Acabei de solicitar meu diagnóstico no site.";
-        }, 800);
+    .then(response => {
+        if (response.ok) {
+            // Sucesso total
+            btn.innerHTML = "SUCESSO!";
+            
+            setTimeout(() => {
+                // Lembre-se de colocar seu número real abaixo:
+                window.location.href = "https://wa.me/5511963333855?text=Olá! Acabei de solicitar meu diagnóstico no site.";
+            }, 800);
+        } else {
+            throw new Error('Erro na resposta do servidor');
+        }
     })
     .catch(error => {
         console.error('Erro no envio:', error);
