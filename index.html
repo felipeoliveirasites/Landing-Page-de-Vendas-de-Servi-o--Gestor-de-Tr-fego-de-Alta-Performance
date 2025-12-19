@@ -278,8 +278,8 @@ document.querySelector('.formulario-contato').addEventListener('submit', functio
     btn.disabled = true;
     btn.innerHTML = "PROCESSANDO...";
 
-    // URL DO SEU WORKER
-    const urlWorker = 'https://wispy-shadow-cb91.felipeoliveirasites.workers.dev/';
+    // COLE AQUI SEU LINK DO GOOGLE (O que termina em /exec)
+    const urlGoogle = 'https://script.google.com/macros/s/AKfycbyKlrQbMR_WY1WCEoTVSZoau7D3V_PE6p7QR8ABy_lN08k9FfXcxyArlz_irHJts9mb/exec';
 
     const dados = {
         name: this.name.value,
@@ -288,21 +288,25 @@ document.querySelector('.formulario-contato').addEventListener('submit', functio
         renda: this.renda.value
     };
 
-    fetch(urlWorker, {
+    // Dispara para o Google sem esperar resposta de segurança (mais rápido)
+    fetch(urlGoogle, {
         method: 'POST',
+        mode: 'no-cors', 
         body: JSON.stringify(dados),
         headers: { 'Content-Type': 'application/json' }
     })
-    .then(response => {
-        // Se o Worker deu 200, ele confirmou que o Google gravou
+    .then(() => {
+        // Sucesso "Cego": O dado foi enviado, agora levamos o cliente ao Whats
         btn.innerHTML = "SUCESSO!";
+        btn.style.backgroundColor = "#28a745";
+
         setTimeout(() => {
-            window.location.href = "https://wa.me/5511963333855?text=Olá! Acabei de solicitar meu diagnóstico.";
+            window.location.href = "https://wa.me/5511963333855?text=Olá! Acabei de solicitar meu diagnóstico no site.";
         }, 800);
     })
     .catch(err => {
-        console.error("Erro no Worker:", err);
-        // Mesmo se o Worker falhar, mandamos para o Whats para não perder o lead
+        console.error("Erro no envio:", err);
+        // Em caso de erro, manda para o Whats de qualquer jeito para não perder o lead
         window.location.href = "https://wa.me/5511963333855";
     });
 });
