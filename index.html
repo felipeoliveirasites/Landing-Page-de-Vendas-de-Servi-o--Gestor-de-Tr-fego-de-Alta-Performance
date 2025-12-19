@@ -271,7 +271,7 @@
   
 
 <script>
-document.querySelector('.formulario-contato').addEventListener('submit', function(e) {
+document.querySelector('.formulario-contato').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const btn = document.querySelector('.btn-final-enviar');
@@ -281,7 +281,7 @@ document.querySelector('.formulario-contato').addEventListener('submit', functio
     btn.disabled = true;
     btn.innerHTML = "ENVIANDO AGUARDE...";
 
-    // Coleta os dados
+    // Coleta os dados (Garanta que os inputs tenham o atributo name="")
     const dados = {
         name: this.name.value,
         name_instagram: this.name_instagram.value,
@@ -289,24 +289,28 @@ document.querySelector('.formulario-contato').addEventListener('submit', functio
         renda: this.renda.value
     };
 
-    // COLE A URL DO SEU WORKER ABAIXO (Aquela .workers.dev):
     const urlWorker = 'https://wispy-shadow-cb91.felipeoliveirasites.workers.dev/';
 
-    // Dispara o envio para o Worker em segundo plano (sem travar a tela)
-    fetch(urlWorker, {
-        method: 'POST',
-        body: JSON.stringify(dados),
-        headers: { 'Content-Type': 'application/json' },
-        keepalive: true // <--- ADICIONE ISSO AQUI!
-    }).catch(err => console.error("Erro silencioso no envio:", err));
+    try {
+        // Enviamos e esperamos a resposta (ou erro)
+        await fetch(urlWorker, {
+            method: 'POST',
+            body: JSON.stringify(dados),
+            headers: { 'Content-Type': 'application/json' },
+            mode: 'no-cors', // Adicionado para evitar problemas de política de navegador
+            keepalive: true
+        });
+        
+        btn.innerHTML = "SUCESSO!";
+    } catch (err) {
+        console.error("Erro no envio:", err);
+        // Mesmo com erro, seguimos para o WhatsApp para não perder o cliente
+    }
 
-    // MOSTRA O SUCESSO IMEDIATAMENTE
-    btn.innerHTML = "SUCESSO!";
-    
-    // Redireciona em 400ms (tempo de um piscar de olhos, só para dar o feedback)
+    // Redireciona após 800ms para o usuário ver o "SUCESSO"
     setTimeout(() => {
         window.location.href = "https://wa.me/5511963333855?text=Olá! Acabei de solicitar meu diagnóstico no site.";
-    }, 1000);
+    }, 800);
 });
 </script>
   
