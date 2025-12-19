@@ -271,38 +271,56 @@
   
 
 <script>
-document.querySelector('.formulario-contato').addEventListener('submit', function(e) {
+document.querySelector('.formulario-contato').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const btn = document.querySelector('.btn-final-enviar');
+    
+    // 1. Início imediato
     btn.disabled = true;
-    btn.innerHTML = "ENVIANDO...";
+    btn.innerHTML = "PROCESSANDO...";
 
-    // Coleta os dados usando FormData (mais seguro)
-    const formData = new FormData(this);
+    // Coleta dos dados
     const dados = {
-        name: formData.get('name'),
-        name_instagram: formData.get('name_instagram'),
-        telephone: formData.get('telephone'),
-        renda: formData.get('renda')
+        name: this.name.value,
+        name_instagram: this.name_instagram.value,
+        telephone: this.telephone.value,
+        renda: this.renda.value
     };
 
     const urlWorker = 'https://wispy-shadow-cb91.felipeoliveirasites.workers.dev/';
 
-    // Envio Otimizado
-    fetch(urlWorker, {
-        method: 'POST',
-        body: JSON.stringify(dados),
-        headers: { 'Content-Type': 'application/json' },
-        mode: 'no-cors', // <--- IMPORTANTE: Evita erro de bloqueio do navegador
-        keepalive: true
-    });
+    try {
+        // 2. Espera a resposta real do servidor (Garante que gravou)
+        const response = await fetch(urlWorker, {
+            method: 'POST',
+            body: JSON.stringify(dados),
+            headers: { 'Content-Type': 'application/json' },
+            keepalive: true
+        });
 
-    // Feedback e Redirecionamento
-    btn.innerHTML = "SUCESSO!";
-    setTimeout(() => {
-        window.location.href = "https://wa.me/5511963333855?text=Olá! Acabei de solicitar meu diagnóstico no site.";
-    }, 1000);
+        if (response.ok) {
+            // 3. Feedback visual de vitória
+            btn.innerHTML = "SUCESSO!";
+            btn.style.backgroundColor = "#28a745"; // Opcional: muda para verde se quiser
+
+            // 4. O "respiro" (600ms): Tempo ideal para o cérebro ler e processar o sucesso
+            setTimeout(() => {
+                window.location.href = "https://wa.me/5511963333855?text=Olá! Acabei de solicitar meu diagnóstico no site.";
+            }, 600);
+            
+        } else {
+            throw new Error("Falha no servidor");
+        }
+
+    } catch (err) {
+        // 5. Tratamento de erro (Volta o botão ao normal para o usuário tentar de novo)
+        console.error("Erro no envio:", err);
+        btn.disabled = false;
+        btn.innerHTML = "TENTAR NOVAMENTE";
+        btn.style.backgroundColor = ""; // Volta a cor original
+        alert("Ops! Houve um erro de conexão. Verifique sua internet e tente novamente.");
+    }
 });
 </script>
   
